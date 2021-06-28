@@ -5,10 +5,10 @@ export class Apifiled extends Component {
     render() {
         return (
             <div>
-                <Alert variant={'danger'}>
-                    Error: 'Wrong Input! Enter City Name'
-                </Alert>
-
+                {this.props.alert &&
+                    <Alert variant={'danger'}>
+                        {this.props.masseg}              </Alert>
+                }
             </div>
         )
     }

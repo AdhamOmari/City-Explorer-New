@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Form, Button, Image } from 'react-bootstrap'
-// import Apifiled from './Apifiled';
+import Apifiled from './Apifiled';
 import axios from 'axios'
 export class Forms extends Component {
     constructor(props) {
@@ -9,42 +9,62 @@ export class Forms extends Component {
             displayName: "",
             latitude: "",
             longitude: "",
-            // erorrs: "",
-            // alert:false
+            display: false,
+            erorrs: "",
+            alert: false,
+            masseg: ""
         }
+
+    }
+    ghngeHandlerSubmit = (e) => {
+        console.log(e.target.value)
+        this.setState({
+            displayName: e.target.value
+
+        });
+        console.log(e.target.value)
 
     }
 
     submitData = async (e) => {
-        e.preventDefault()
-        let axiosResponse = await axios.get(`https://eu1.locationiq.com/v1/search.php?key=pk.60346fba30221450f0bd55e67928ff53&city=${this.state.displayName}&format=json`)
-        this.setState({
-            displayName: axiosResponse.data[0].display_name,
-            longitude: axiosResponse.data[0].lon,
-            latitude: axiosResponse.data[0].lat,
-            // alert:true,
+        e.preventDefault();
+        try {
+            let axiosResponse = await axios.get(`https://eu1.locationiq.com/v1/search.php?key=pk.c29ec7745248a3f12771c0a5c3f3fd9e&q=${this.state.displayName}&format=json`)
+            this.setState({
+                displayName: axiosResponse.data[0].display_name,
+                longitude: axiosResponse.data[0].lon,
+                latitude: axiosResponse.data[0].lat,
+                display: true,
+                alert: false
 
-        })
-        // console.log(this.setState.longitude)
-        // console.log(this.setState.latitude)
 
+            })
+            console.log(this.state.longitude)
+            console.log(this.state.latitude)
+
+        }
+        catch (masseg) {
+            this.setState({
+                masseg: 'enter valid',
+                alert: true
+            })
+
+            // console.log(this.setState.longitude)
+            // console.log(this.setState.latitude)
+
+
+        }
 
     }
 
-    ghngeHandlerSubmit = (e) => {
-        this.setState({
-            displayName: e.target.value
-
-        })
-    }
     render() {
         return (
             <>
-                {/* <Apifiled alert ={this.state.Apifiled}></Apifiled> */}
+                <Apifiled alert={this.state.alert} masseg={this.state.masseg} />
                 <Form onSubmit={this.submitData}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label> City Name </Form.Label>
-                        <Form.Control type="text" placeholder="City Name" onChange={(e) => { this.submitData(e) }} size={'sm'}
+                        <Form.Control type="text" placeholder="City Name" onChange={(e) => { this.ghngeHandlerSubmit(e) }} size={'sm'}
                         />
 
                     </Form.Group>
@@ -53,16 +73,20 @@ export class Forms extends Component {
                         Explore!
                     </Button>
                 </Form>
-
+{this.state.display &&
                 <div>
-                    <Image alt="" src={`https://maps.locationiq.com/v3/staticmap?key=pk.88bdc34a015f169659efd4fa8583736c&center=${this.state.latitude.lat},${this.state.longitude.lon}&zoom=10`} rounded/>
+                    <p>
+                        {this.state.displayName}
+                        {this.state.latitude}
+                        {this.state.longitude}
+                    </p>
+                    <Image alt="" src={`https://maps.locationiq.com/v3/staticmap?key=pk.c29ec7745248a3f12771c0a5c3f3fd9e&center=${this.state.latitude},${this.state.longitude}&zoom=10`} rounded />
 
-                zoom=14`} rounded />
-                    {/* https://maps.locationiq.com/v3/staticmap?key=pk.f4b79e178c396da16af306c66309dd25&center=17.450419,78.381149&si
-{`https://maps.locationiq.com/v3/staticmap?key=pk.f4b79e178c396da16af306c66309dd25&center=${this.state.latitude.lat},${this.state.longitude.lon}`}
+                    <span>
+                    </span>
 
- */}
                 </div>
+                }
             </>
         )
     }
