@@ -1,5 +1,46 @@
  netlify: https://60d89dced8eda9a5d2b4d441--silly-ritchie-77d48b.netlify.app/
 
+# Project Name
+
+**Author**: Your Name Goes Here
+**Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
+
+## Overview
+<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+search map engine, to git practice with API and react: it allows the user to determine the city and to prove (lat,lon)
+search map ingine 
+
+## Getting Started
+<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+the user can enter the name of the city and then its apeer in explorer 
+
+## Architecture
+<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+react js 
+bootstrap react (Form,Buttom,Image);
+axios 
+
+
+## Change Log
+<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
+
+01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
+
+## Credit and Collaborations
+<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+still working on it 
+
+
+
+Name of feature: _______class06_________________________
+
+Estimate of time needed to complete: ____2_
+
+Start time: _3____
+
+Finish time: __11:30___
+
+Actual time needed to complete: ___8:30__
 
 # Getting Started with Create React App
 
